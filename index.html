@@ -1,68 +1,20 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
 	<meta charset="utf-8">
-	<title>Multiple Correct Answers</title>
-  </head>
-  <body>
-    <header>
-    	<h1>Question 2:</h1>
-    </header>
-    <div id="question">
-    	<h2>Click ALL correct answers:</h2>
-    	<hr>
-    	<input id="answer-1" name="answer-1" type="checkbox">
-      <label for="answer-1">Make sure this box is checked</label>
-      <br>
-      <br>
-      <input id="answer-2" name="answer-2" type="checkbox">
-      <label for="answer-2">This box as well</label>
-      <br>
-      <br>
-      <input id="answer-3" name="answer-3" type="checkbox">
-      <label for="answer-3">Definitely not this box</label>
-      <br>
-      <br>
-      <input id="answer-4" name="answer-4" type="checkbox">
-      <label for="answer-4">But do check this box</label>
-      <br>
-      <br>
-      <button id="submit" type="button" onclick="checkAnswer()">Click here to check your work</button>
-      <br>
-      <p id="result">Your result is displayed here:</p>
-    	<button id="reset" type="button" onclick="reset()">RESET</button>
-    	<hr>
-    	<!---Need to change these into buttons that link and send correct/incorrect info to next page --->
-    	<a href="./radio-question.html">Prev</a>
-    	<a href="./drag-and-drop-question.html">Next</a>
-    </div>
-    <script type="text/javascript">
-    	const checkAnswer = () =>{
-    		/*Did we get here?
-    		document.getElementById("answer-1").innerHTML = "You clicked on something"*/
+	<title>Homepage</title>
+</head>
+<body>
+  <div id="Introduction">
+    <h1>Alex's Big Wine Site</h1>
+    <p>This is the home page for the wine website</p>
+  </div>
+  <hr>
+  <div>
+  	<h2>Self-Evlauation</h2>
+  	<p>Click <a href="./Name-input.html">here</a> to go to the self-assessment</p>
+  </div>
 
-    		//Disable clicking any additional boxes
-    		document.getElementById("answer-1").disabled = true
-    		document.getElementById("answer-2").disabled = true
-    		document.getElementById("answer-3").disabled = true
-    		document.getElementById("answer-4").disabled = true
-    		//Relay back to the user that they chose correctly
-    		//Need to loop this
-    		let box1 = document.getElementById('answer-1').checked
-        let box2 = document.getElementById('answer-2').checked
-        let box3 = document.getElementById('answer-3').checked
-        let box4 = document.getElementById('answer-4').checked
-        box1 && box2 && !box3 && box4 ? document.getElementById('result').innerHTML = "CORRECT" : document.getElementById('result').innerHTML = "INCORRECT"
-    	}
-    </script>
-    <script type="text/javascript">
-    	const reset = () => {
-        document.getElementById('result').innerHTML = "Your result is displayed here:" //This is hard-coded, should pass button ID as parameter. Need to figure out how to send a element parameter
-        document.getElementById('answer-1').disabled = false
-        document.getElementById('answer-2').disabled = false
-        document.getElementById('answer-3').disabled = false
-        document.getElementById('answer-4').disabled = false
-        }
-    </script>
-  </body>
+</body>
 </html>

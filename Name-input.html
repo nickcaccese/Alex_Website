@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<!---Header Shit Here--->
+    <title>Generic Textbox and Button Example</title>
+  </head>
+  <body>
+  	<!---Body Shit Here--->
+    <header>
+      <h1>Example Assesment</h1><hr>
+    </header>
+    <form action="./Names.txt" method="PUSH"> 
+      <div id="question-1">
+        <h2>Question 1</h2>
+        <label for="problem-1">Please enter your name here:</label>
+        <input id="problem-1" name="problem-1" type="text" value="Chuck" required>
+        <button id="first-button" type="button" onclick="checkAnswer()">Submit</button>
+      </div>
+    </form>
+    <hr>
+    <button id="reset" type="button" onclick="reset()">Reset</button>
+    <a href="./radio-question.html">Next Page</a>
+    <!--- Look into JQuery to be able to link to .js files for future --->
+    <script type="text/javascript">
+      const checkAnswer = () => {
+        document.getElementById("first-button").innerHTML = "Submitted" //This is hard-coded, should pass button ID as parameter. Need to figure out how to send a element parameter
+        document.getElementById('first-button').disabled = true
+        document.getElementById('reset').disabled = false
+      }
+    </script>
+    <script type="text/javascript">
+      const reset = () => {
+        document.getElementById("first-button").innerHTML = "Submit" //This is hard-coded, should pass button ID as parameter. Need to figure out how to send a element parameter
+        document.getElementById('first-button').disabled = false
+        document.getElementById('reset').disabled = true
+      }
+    </script>
+  </body>
+  <footer>
+  	<!---Footer Shit Here--->
+  </footer>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>One Correct Answer</title>
+  </head>
+  <body>
+    <header>
+    	<h1>Question 1:</h1>
+    </header>
+    <div id="question">
+    	<h2>Click on the correct answer:</h2>
+    	<hr>
+    	<button id="answer-1" type="button" onclick="checkAnswer(0)">This answer is incorrect</button>
+    	<br><br>
+    	<button id="answer-2" type="button" onclick="checkAnswer(0)">This answer is also incorrect</button>
+    	<br><br>
+    	<button id="answer-3" type="button" onclick="checkAnswer(1)">This answer is correct</button>
+    	<br><br>
+    	<button id="answer-4" type="button" onclick="checkAnswer(0)">But this answer is not correct</button>
+    	<br>
+    	<p id="result">Your result is displayed here:</p>
+    	<button id="reset" type="button" onclick="reset()">RESET</button>
+    	<hr>
+    	<!---Need to change these into buttons that link and send correct/incorrect info to next page --->
+    	<a href="./Name-input.html">Prev</a>
+    	<a href="./checkbox-question.html">Next</a>
+    </div>
+    <script type="text/javascript">
+    	const checkAnswer = (answer) =>{
+    		/*Did we get here?
+    		document.getElementById("answer-1").innerHTML = "You clicked on something"*/
+
+    		//Disable clicking any additional boxes
+    		document.getElementById("answer-1").disabled = true
+    		document.getElementById("answer-2").disabled = true
+    		document.getElementById("answer-3").disabled = true
+    		document.getElementById("answer-4").disabled = true
+    		/* Need to get this loop working
+    		for (let i = 1; i<5; i++) {
+    			document.getElementById('answer\-' + i).disabled	= true
+    			document.getElementById("last-querey").innerHTML = 'answer\-' + i + ' ' + answer
+    		}*/
+    		//Relay back to the user that they chose correctly
+    		answer ? document.getElementById('result').innerHTML = "CORRECT" : document.getElementById('result').innerHTML = "INCORRECT"
+    	}
+    </script>
+    <script type="text/javascript">
+    	const reset = () => {
+        document.getElementById('result').innerHTML = "Your result is displayed here:" //This is hard-coded, should pass button ID as parameter. Need to figure out how to send a element parameter
+        document.getElementById('answer-1').disabled = false
+        document.getElementById('answer-2').disabled = false
+        document.getElementById('answer-3').disabled = false
+        document.getElementById('answer-4').disabled = false
+        }
+    </script>
+  </body>
+</html>
