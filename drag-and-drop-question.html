@@ -1,24 +1,135 @@
 <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <title>Highlight dropzones with interact.js</title>
-    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-    <script type="module" src="./js/index.js"></script>
-    <link rel="stylesheet" href="./css/index.css">
+	<meta charset="utf-8">
+	<title>Building a draggable thing from scratch</title>
+	<link rel="stylesheet" type="text/css" href="./index.css">
+	<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+
 </head>
 <body>
+  <div id="no-drop" class="drag-drop"> #no-drop </div>
 
-<div id="drag1" class="draggable js-drag">Drag me…</div>
-<div id="drag2" class="draggable js-drag">Drag me…</div>
-<div id="drag3" class="draggable js-drag">Drag me…</div>
-<div id="drag4" class="draggable js-drag">Drag me…</div>
+  <div id="yes-drop" class="drag-drop"> #yes-drop </div>
+  
+  <div id="outer-dropzone" class="dropzone">
+    This is the incorrect zone
+    <div id="inner-dropzone" class="dropzone">This is the correct zone</div>
+  </div>
+  <script type="text/javascript">
+  	// target elements with the "draggable" class
+    interact('.draggable')
+      .draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: 'parent',
+            endOnly: true
+          })
+        ],
+        // enable autoScroll
+        autoScroll: true,
+    
+        listeners: {
+          // call this function on every dragmove event
+          move: dragMoveListener,
+    
+          // call this function on every dragend event
+          end (event) {
+            var textEl = event.target.querySelector('p')
+    
+            textEl && (textEl.textContent =
+              'moved a distance of ' +
+              (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
+                         Math.pow(event.pageY - event.y0, 2) | 0))
+                .toFixed(2) + 'px')
+          }
+        }
+      })
+    
+    function dragMoveListener (event) {
+      var target = event.target
+      // keep the dragged position in the data-x/data-y attributes
+      var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+      var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+    
+      // translate the element
+      target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+    
+      // update the posiion attributes
+      target.setAttribute('data-x', x)
+      target.setAttribute('data-y', y)
+    }
+    
+    // this function is used later in the resizing and gesture demos
+    //window.dragMoveListener = dragMoveListener
 
-<div class="dropzone-wrapper">
-    <div id="drop1" class="dropzone js-drop">Dropzone</div>
-    <div id="drop2" class="dropzone js-drop">Dropzone</div>
-    <div id="drop3" class="dropzone js-drop">Dropzone</div>
-</div>
+    /* The dragging code for '.draggable' from the demo above
+     * applies to this demo as well so it doesn't have to be repeated. */
 
+    // enable draggables to be dropped into this
+    interact('.dropzone').dropzone({
+      // only accept elements matching this CSS selector
+      accept: '#yes-drop',
+      // Require a 75% element overlap for a drop to be possible
+      overlap: 0.75,
+
+      // listen for drop related events:
+
+      ondropactivate: function (event) {
+        // add active dropzone feedback
+        event.target.classList.add('drop-active')
+      },
+      ondragenter: function (event) {
+        var draggableElement = event.relatedTarget
+        var dropzoneElement = event.target
+
+        // feedback the possibility of a drop
+        if (dropzoneElement === document.getElementById('outer-dropzone')){
+          draggableElement.classList.add('can-drop-wrong')
+          draggableElement.classList.remove('can-drop-right')
+        }
+        else{
+          draggableElement.classList.add('can-drop-right')
+          draggableElement.classList.remove('can-drop-wrong')
+        }
+
+        dropzoneElement.classList.add('drop-target')
+        draggableElement.textContent = 'Dragged in'
+      },
+      ondragleave: function (event) {
+        // remove the drop feedback style
+        event.target.classList.remove('drop-target')
+        event.relatedTarget.classList.remove('can-drop-wrong')
+        event.relatedTarget.classList.remove('can-drop-right')
+        event.relatedTarget.textContent = 'Dragged out'
+      },
+      ondrop: function (event) {
+        event.relatedTarget.textContent = 'Dropped'
+      },
+      ondropdeactivate: function (event) {
+        // remove active dropzone feedback
+        event.target.classList.remove('drop-active')
+        event.target.classList.remove('drop-target')
+      }
+    })     
+
+    interact('.drag-drop')
+      .draggable({
+        inertia: true,
+        modifiers: [
+          /*interact.modifiers.restrictRect({
+            restriction: 'parent',
+            endOnly: true
+          })*/
+        ],
+        autoScroll: true,
+        // dragMoveListener from the dragging demo above
+        listeners: { move: dragMoveListener }
+      })
+  </script>
 </body>
 </html>

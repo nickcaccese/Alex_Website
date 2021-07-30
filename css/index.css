@@ -1,43 +1,76 @@
-body { font-family: Helvetica, Arial, sans-serif; }
+.item{
+	background-color: #009090;
+	width: 75px;
+	margin-bottom: 10px;
+	color: #ffffff;
+	touch-action:  none;
+	user-select:  none;
+}
 
-.dropzone-wrapper {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+#outer-dropzone {
+  height: 140px;
+}
+
+#inner-dropzone {
+  height: 160px;
+  background-color: #bf94ff;
 }
 
 .dropzone {
-    overflow: hidden;
-    margin: .5em;
-    padding: 1em;
-    color: #666;
-    text-align: center;
-    background: #ccc;
-    line-height: 4em;
-    border: 4px dashed transparent;
-    transition: background .15s linear, border-color .15s linear;
+  background-color: #bfe4ff;
+  border: dashed 4px transparent;
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 10px;
+  width: 80%;
+  transition: background-color 0.3s;
 }
 
-.dropzone.-drop-possible { border-color: #666; }
-
-.dropzone.-drop-over {
-    background: #666;
-    color: #fff;
+.drop-active {
+  border-color: #aaa;
 }
 
-.draggable {
-    position: relative;
-    z-index: 10;
-    width: 200px;
-    margin: .25em;
-    padding: 1em 2em;
-    background-color: #29e;
-    color: #fff;
-    text-align: center;
-
-    -ms-touch-action: none;
-        touch-action: none;
+.drop-target {
+  background-color: #29e;
+  border-color: #fff;
+  border-style: solid;
 }
 
-.draggable.-drop-possible { background-color: #42bd41; }
+.drag-drop {
+  display: inline-block;
+  min-width: 40px;
+  padding: 2em 0.5em;
+  margin: 1rem 0 0 1rem;
+
+  color: #fff;
+  background-color: #29e;
+  border: solid 2px #fff;
+
+  touch-action: none;
+  transform: translate(0px, 0px);
+
+  transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop-right {
+  color: #000;
+  background-color: #4e4;
+}
+
+.drag-drop.can-drop-wrong {
+	color: #000;
+	background-color: #e44;
+}
+
+#drag-1, #drag-2 {
+  width: 25%;
+  min-height: 6.5em;
+  margin: 1rem 0 0 1rem;
+  background-color: #29e;
+  color: white;
+  border-radius: 0.75em;
+  padding: 4%;
+  touch-action: none;
+  user-select: none;
+  transform: translate(0px, 0px);
+}
