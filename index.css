@@ -50,7 +50,6 @@
   transform: translate(0px, 0px);
 
   transition: background-color 0.3s;
-  font-size: 100px;
 }
 
 .drag-drop.can-drop-right {
