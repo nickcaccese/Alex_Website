@@ -1,76 +1,119 @@
-.item{
-	background-color: #009090;
-	width: 75px;
-	margin-bottom: 10px;
-	color: #ffffff;
-	touch-action:  none;
-	user-select:  none;
+:root {
+  --clr-primary-400: #004a04;
+  --clr-accent-400: #700c18;
+  --clr-neutral-100:  #fff;
+
+  /* Font families
+  
+  --ff-primary: ;
+  --ff-accent: ;
+
+  */
 }
 
-#outer-dropzone {
-  height: 140px;
+body{
+  font-weight: 400;
+  font-size: 1.3125rem;
+  line-height: 1.6;
 }
 
-#inner-dropzone {
-  height: 160px;
-  background-color: #bf94ff;
+*,
+*::before,
+*::after {
+  box-sizing:  border-box;
 }
 
-.dropzone {
-  background-color: #bfe4ff;
-  border: dashed 4px transparent;
-  border-radius: 4px;
-  margin: 10px auto 30px;
-  padding: 10px;
-  width: 80%;
-  transition: background-color 0.3s;
+body,
+h1,
+h2,
+h3,
+p {
+  margin:  0;
 }
 
-.drop-active {
-  border-color: #aaa;
+h1,
+h2,
+h3{
+  line-height: 1;
+  font-weight: 900;
+
 }
 
-.drop-target {
-  background-color: #29e;
-  border-color: #fff;
-  border-style: solid;
+h1,
+h2,
+h3,
+p {
+  margin-bottom: 1em;
 }
 
-.drag-drop {
-  display: inline-block;
-  min-width: 40px;
-  padding: 2em 0.5em;
-  margin: 1rem 0 0 1rem;
-
-  color: #fff;
-  background-color: #29e;
-  border: solid 2px #fff;
-
-  touch-action: none;
-  transform: translate(0px, 0px);
-
-  transition: background-color 0.3s;
+.text-right{
+  text-align: right;
 }
 
-.drag-drop.can-drop-right {
-  color: #000;
-  background-color: #4e4;
+header,
+section,
+footer {
+  padding: 3rem 0;
 }
 
-.drag-drop.can-drop-wrong {
-	color: #000;
-	background-color: #e44;
+.container {
+  margin-inline:  auto;
+  width: min(90%, 70.5rem);
 }
 
-#drag-1, #drag-2 {
-  width: 25%;
-  min-height: 6.5em;
-  margin: 1rem 0 0 1rem;
-  background-color: #29e;
-  color: white;
-  border-radius: 0.75em;
-  padding: 4%;
-  touch-action: none;
-  user-select: none;
-  transform: translate(0px, 0px);
+.split {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width:  40rem){
+  .split{
+    flex-direction: row;
+  }
+
+  .split > * {
+    flex-basis: 100%;
+  }
+  .split > * + * {
+    flex-basis: 40%;
+  }
+}
+
+.bg-green {
+  background-color: var(--clr-primary-400);
+  /*Fix this*/
+  color: var(--clr-neutral-100);
+}
+.bg-red {
+  background-color: var(--clr-accent-400);
+  color: var(--clr-neutral-100);
+}
+.bg-white {
+  background-color: var(--clr-neutral-100);
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+  background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
 }
