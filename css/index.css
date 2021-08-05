@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+
 :root {
   --clr-primary-400: #004a04;
   --clr-accent-400: #700c18;
   --clr-neutral-100:  #fff;
 
-  /* Font families
+  /* Font families */
   
-  --ff-primary: ;
-  --ff-accent: ;
+  --ff-primary: 'Roboto', sans-serif;
+  
 
-  */
+  
 }
 
 body{
@@ -29,6 +32,7 @@ h2,
 h3,
 p {
   margin:  0;
+  font-family:  var(--ff-primary);
 }
 
 h1,
@@ -36,6 +40,7 @@ h2,
 h3{
   line-height: 1;
   font-weight: 900;
+  
 
 }
 
@@ -92,22 +97,23 @@ footer {
   background-color: var(--clr-neutral-100);
 }
 
+
 /* Style the button that is used to open and close the collapsible content */
-.collapsible {
-  background-color: #eee;
-  color: #444;
+.collapsable {
+  background-color: #222;
+  color: #ddd;
   cursor: pointer;
-  padding: 18px;
-  width: 100%;
+  padding: 1.125rem;
+  width: 90%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 15px;
+  font-size: .938rem;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .collapsible:hover {
-  background-color: #ccc;
+.active, .collapsable:hover {
+  background-color: #333;
 }
 
 /* Style the collapsible content. Note: hidden by default */
@@ -116,4 +122,5 @@ footer {
   display: none;
   overflow: hidden;
   background-color: #f1f1f1;
+  width: 90%;
 }
