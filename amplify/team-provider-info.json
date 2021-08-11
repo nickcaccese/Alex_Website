@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplify837e7991e9e34-staging-184850-authRole",
+      "UnauthRoleArn": "arn:aws:iam::129617821699:role/amplify-amplify837e7991e9e34-staging-184850-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::129617821699:role/amplify-amplify837e7991e9e34-staging-184850-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-amplify837e7991e9e34-staging-184850-deployment",
+      "UnauthRoleName": "amplify-amplify837e7991e9e34-staging-184850-unauthRole",
+      "StackName": "amplify-amplify837e7991e9e34-staging-184850",
+      "StackId": "arn:aws:cloudformation:us-east-2:129617821699:stack/amplify-amplify837e7991e9e34-staging-184850/c6706030-f61d-11eb-b0f6-0a8d8b49f4f2",
+      "AmplifyAppId": "d2j1qdja572zcm"
+    },
+    "categories": {
+      "auth": {
+        "AlexWebsite": {}
+      }
+    }
+  }
+}
