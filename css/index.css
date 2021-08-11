@@ -48,14 +48,13 @@ h2,
 h3{
   line-height: 1;
   font-weight: 900;
-  
-
 }
 
 h1,
 h2,
 h3,
-p {
+p,
+.content {
   margin-bottom: 1em;
 }
 
@@ -70,7 +69,7 @@ footer {
 }
 
 .container {
-  margin-inline:  auto;
+  margin-inline: auto;
   width: min(90%, 70.5rem);
 }
 
@@ -79,7 +78,7 @@ footer {
   flex-direction: column;
 }
 
-@media (min-width:  40rem){
+@media (min-width: 40rem){
   .split{
     flex-direction: row;
   }
